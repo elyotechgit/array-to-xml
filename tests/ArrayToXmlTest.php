@@ -223,4 +223,21 @@ class ArrayToXmlTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($expectedXml, $result);
     }    
+        /**
+     * @test
+     */
+    public function it_support_now_attribtues_to_xml_with_value_second()
+    {
+
+        $array = ['user' => ['alpha', ['_attributes'=>['type'=>'admin'],'_value'=>'beta'], 'gamma']];
+
+        $expectedXml = '<?xml version="1.0"?>
+<root><user>alpha</user><user type="admin">beta</user><user>gamma</user></root>'.PHP_EOL;
+
+
+        $result = ArrayToXml::convert($array);
+
+        $this->assertEquals($expectedXml, $result);
+    }
+
 }
